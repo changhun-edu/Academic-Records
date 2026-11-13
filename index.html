@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -402,6 +401,43 @@ footer a{color:var(--ink);font-weight:700}
   .cm li{grid-template-columns:72px 1fr}
 }
 @media print{header.top,.lic,footer,.toc,.nextnav{display:none}body{background:#fff}}
+/* ── 절차 한눈에 ── */
+.pflow{list-style:none;display:grid;gap:0;margin:0;padding:0}
+.pflow li{position:relative;padding:0 0 14px 40px}
+.pflow li::before{content:"";position:absolute;left:13px;top:28px;bottom:2px;width:2px;background:var(--line)}
+.pflow li:last-child{padding-bottom:4px}.pflow li:last-child::before{display:none}
+.pflow .pn{position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;background:var(--pri);color:#fff}
+.pflow li.a .pn{background:var(--amb)}.pflow li.v .pn{background:var(--vio)}
+.pflow .pm{display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-height:28px}
+.pw{display:inline-flex;align-items:center;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--pri-50);color:var(--pri)}
+.pw.a{background:var(--amb-50);color:var(--amb)}.pw.v{background:var(--vio-50);color:var(--vio)}
+.pd{display:inline-flex;align-items:center;gap:3px;font-size:12.5px;color:var(--sub);font-weight:600}.pd svg{width:13px;height:13px}
+.pflow .pt{font-weight:700;font-size:15.5px;line-height:1.45;margin-top:2px}
+.pflow .pdd{font-size:14px;color:#3A4354;margin-top:3px;line-height:1.6}
+.pdx summary{font-size:12.5px;color:var(--sub);cursor:pointer;margin-top:2px;list-style:none}
+.pdx summary::-webkit-details-marker{display:none}
+.pdx summary::before{content:"＋ "}.pdx[open] summary::before{content:"－ "}
+.pxs{display:grid;gap:6px;margin-top:10px}
+.px{display:flex;gap:8px;font-size:13.5px;line-height:1.5;background:var(--bg);border-radius:10px;padding:8px 10px}
+.px b{display:inline-flex;align-items:center;gap:4px;flex:none;color:var(--ink)}.px b svg{width:15px;height:15px}
+.px span{color:var(--sub)}
+.pcard{background:#fff;border:2px solid var(--ink);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.pcard .plb{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:800;color:var(--ink);margin-bottom:8px}
+.pcard .plb svg{width:17px;height:17px}
+.pcard .psum{font-size:14px;color:var(--sub);line-height:1.6;margin-bottom:12px}
+.ptabs{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.ptabs button{font-size:13.5px;font-weight:700;padding:7px 12px;border-radius:999px;background:var(--line2);color:var(--sub)}
+.ptabs button.on{background:var(--ink);color:#fff}
+.fold.proc summary{display:flex;align-items:center;gap:8px}
+.fold.proc .pc{margin-left:auto;font-size:12px;font-weight:700;color:var(--sub);background:var(--line2);padding:2px 8px;border-radius:999px}
+.ph{font-size:14px;font-weight:800;margin:6px 0 8px}
+.plegend{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 4px}
+.lawhint{display:flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border-radius:12px;padding:12px 14px;margin-top:12px;font-size:14px;width:100%;text-align:left}
+.lawhint b{color:#FFD48A}.lawhint svg{flex:none}
+.sgrp{font-size:13px;font-weight:800;color:var(--sub);margin:16px 0 0;display:flex;align-items:center;gap:6px}
+.sgrp small{font-weight:600;color:var(--mute)}
+details.lawres{margin-top:16px}
+details.lawres>summary{font-size:13.5px;font-weight:700;color:var(--sub);cursor:pointer;padding:10px 12px;border:1px dashed var(--line);border-radius:12px}
 </style>
 </head>
 <body>
@@ -815,7 +851,8 @@ const SIT = [
     '초등학교는 새 주소의 <b>통학구역 학교</b>로만 전학합니다. 보호자가 학교를 골라 갈 수는 없고, 교육장 지정 전학 같은 경우만 예외입니다.',
     '이사 예정이라며 계약서만 가져온 경우에는 전학할 수 없습니다. 전입신고가 먼저입니다.',
     '전출과 전입은 <b>같은 학년</b>으로 합니다. 전출일과 전입일 사이에 공백이 생기지 않게 날짜를 정합니다.',
-    '행정정보 공동이용에 동의하지 않으면 주소 변경을 확인할 수 있는 서류를 내게 합니다.'
+    '행정정보 공동이용에 동의하지 않으면 주소 변경을 확인할 수 있는 서류를 내게 합니다.',
+    '전입학은 <b>방학 중에도</b> 진행합니다. 방학 동안 전입·전출을 맡을 사람과 연락 방법을 미리 정해 두면 처리가 끊기지 않습니다.'
   ],
   steps:[
     {t:'전입 확인과 학급 배정', who:'학교', when:'전입 당일', d:'행정복지센터의 전입신고 접수증이나 전입생 명부를 확인하고, 학교의 학급 배정 기준에 따라 반을 정합니다. 개인정보 이용 동의서 등 학교별 서류를 받습니다.'},
@@ -834,7 +871,7 @@ const SIT = [
     '전출교와 전입교의 출석일수를 합해 <b>전입교 수업일수의 3분의 2 이상</b>이면 그 학년을 수료할 수 있습니다. 두 학교 출결을 합쳐 결석·지각·조퇴·결과가 하나도 없으면 ‘개근’입니다.'
   ],
   law:['「초·중등교육법 시행령」 제21조(초등학교의 전학 절차)'],
-  qa:[27,28,31,32], tools:['move','pass'] },
+  qa:[27,28,31,32,58], tools:['move','pass'] },
 
 { id:'moveout', grp:'tr', icon:'door', title:'전학 가는 학생을 보내요', sub:'전출 처리와 자료 송부',
   sum:'전출일까지의 모든 기록을 입력한 뒤 학교생활기록부를 생성해 <b>전출 당일</b> 전입교로 보내는 것이 원칙입니다. 별도의 전출 요청·승인 공문은 주고받지 않습니다.',
@@ -860,20 +897,30 @@ const SIT = [
   law:['「초·중등교육법 시행령」 제21조 ⑤(학교생활기록부·건강기록부 송부)'],
   qa:[29,33], tools:['move'], ext:['unexcused'] },
 
-{ id:'designated', grp:'tr', icon:'gavel', title:'주소 이전 없이 전학이 필요해요', sub:'교육장 지정 전학 · 비밀전입',
-  sum:'학교생활 부적응, 아동학대·가정폭력 같은 가정 사정, 성폭력 피해, 학교폭력·교육활동 침해 조치처럼 <b>교육환경을 바꿔야 할 때</b>는 학교장이 교육장에게 전학을 추천하거나 배정을 요청하고, 교육장이 전학할 학교를 지정합니다.',
+{ id:'designated', grp:'tr', icon:'gavel', title:'주소 이전 없이 전학이 필요해요', sub:'교육환경 전환 · 교육장 지정 전학 · 비밀전입',
+  sum:'학교생활 부적응, 아동학대·가정폭력 같은 가정 사정, 성폭력 피해, 학교폭력·교육활동 침해 조치처럼 <b>교육환경을 바꿔야 할 때</b>는 학교장이 교육장에게 전학을 추천하거나 배정을 요청하고, 교육장이 전학할 학교를 지정합니다. 학교 현장에서는 흔히 <b>교육환경 전환</b>이라고 부릅니다.',
   table:{head:['대상','동의·요건','근거'],rows:[
+    ['질병 등','보호자 동의. 질병 때문에 학교를 옮겨야 함을 보여 주는 진단서를 붙입니다(교육지원청에 따라 종합병원 진단서를 요구).','시행령 제21조, 교육지원청 안내'],
     ['학교생활 부적응·가정 사정 (아동학대·가정폭력 피해 등)','보호자 1명 동의 (행위자인 보호자 제외). 친권 제한·후견인 문제 등으로 동의를 받기 어려우면 의무교육관리위원회 심의로 추천','시행령 제21조 ⑥·⑦'],
     ['성폭력 피해학생','가해자가 아닌 보호자 1명 동의 → 학교장은 추천해야 하고 교육장은 지정해야 함','성폭력방지법 제7조'],
     ['학교폭력 피해학생 보호','보호자 1명 동의, 교육장 지정 전학 절차로 신청','시행령 제21조'],
     ['학교폭력 가해학생 (제8호 전학)','학교폭력대책심의위원회 결정 → 학교장이 배정 요청','학교폭력예방법 시행령 제20조'],
-    ['교육활동 침해학생 (전학 조치)','지역교권보호위원회 결정 → 학교장이 배정 요청','교원지위법']
+    ['교육활동 침해학생 (전학 조치)','지역교권보호위원회 결정 → 학교장이 배정 요청','교원지위법'],
+    ['자율학구 전입학 (운영하는 지역만)','자율학구로 지정된 학교로 옮기는 경우. 받을 학교와 미리 상담하고, 옮길 수 있는 범위(같은 시·군·구 안 등)는 지역 기준을 따릅니다.','교육지원청 안내']
   ]},
   check:[
     '아동학대·가정폭력·성폭력 피해 학생은 <b>주소를 옮기지 않아도</b>(같은 지역 안이라도) 피해 사실을 보여 주는 객관적 자료가 있으면 전입학을 허가합니다. 형제·자매도 가족관계증명서 등으로 함께 지원할 수 있습니다.',
     '객관적 자료 예: 가정폭력상담소·보호시설·성폭력피해자통합지원센터의 상담사실 확인서, 지자체의 취학지원 요청 공문과 학대피해아동 취학지원 요청서, 아동보호전문기관 사실 확인서, 병·의원 진단서',
     '피해 아동의 교육을 맡은 교직원은 정당한 사유 없이 취학·전학 사실을 <b>행위자인 친권자를 포함해 누구에게도</b> 알려서는 안 됩니다.'
   ],
+  docs:{
+    '공통 (교육지원청마다 다름 — 예시)':['학교장 추천서','담임 추천서','보호자 동의서','학교생활기록부Ⅱ 사본','주민등록등본'],
+    '질병':['진단서 (종합병원 진단서를 요구하는 곳이 많음)'],
+    '학교폭력 피해학생':['학교폭력대책심의위원회 조치 결정 공문과 결정 통보서'],
+    '자율학구 전입학':['받을 학교와 미리 상담했는지 확인 (방문·전화)'],
+    '학교생활 부적응':['위기관리위원회 회의록','담임 상담 기록과 Wee센터 상담 일지 (필요한 횟수는 교육지원청 기준)'],
+    '아동학대·가정폭력·성폭력 (지자체 요청)':['피해아동 취학지원 요청서 (지자체 → 학교·교육지원청)','보호자 전학 동의서 (행위자인 보호자 제외)','학교장 추천서 (재학 학교 → 교육지원청)']
+  },
   steps:[
     {t:'요청과 동의 받기', who:'보호자 · 관계 기관', when:'', d:'보호자 신청서(또는 의무교육관리위원회 회의록), 학대·폭력 관련 기관의 요청이나 확인서를 받습니다.'},
     {t:'학교장 추천 또는 배정 요청', who:'학교장 → 교육지원청', when:'', d:'담임 의견서, 학교장 의견서, 증빙을 붙여 공문으로 보냅니다. 학교폭력 가해학생은 배정 요청서와 조치 결정 통보서, 교육활동 침해학생은 배정 요청서와 특별교육 이수증 사본 등을 붙입니다.'},
@@ -884,7 +931,9 @@ const SIT = [
   notes:[
     '아동보호전문기관 보호 기간은 위탁교육으로 처리해 출석으로 인정합니다(시행령 제21조 ⑨). 관련 기관이 일시보호 기간의 출석인정을 공문으로 요청하면 학생이 불이익을 받지 않도록 협조합니다.',
     '전학 간 학교폭력 가해학생은 피해학생이 다니는 원래 학교로 다시 전학 올 수 없고, 상급학교 진학 때도 피해학생과 다른 학교로 배정됩니다(피해학생 우선 배정).',
-    '피해학생 측은 가해학생이 옮겨 가기를 바라지 않는 가까운 학교를 빼 달라고 요청할 수 있습니다.'
+    '피해학생 측은 가해학생이 옮겨 가기를 바라지 않는 가까운 학교를 빼 달라고 요청할 수 있습니다.',
+    '<b>시·도·교육지원청마다 다릅니다.</b> 교육환경 전환의 대상 범위, 제출 서류, 학교생활 부적응 사유의 요건(교사·Wee센터 상담 횟수, 초등학교 재학 중 한 번만 허용 등), 자율학구 운영 여부는 교육지원청이 해마다 따로 안내합니다. 소속 교육지원청의 해당 학년도 안내를 확인하세요.',
+    '방학 중에도 교육환경 전환과 전입학은 진행합니다.'
   ],
   law:['「초·중등교육법 시행령」 제21조 ⑥~⑨','「가정폭력범죄의 처벌 등에 관한 특례법」 제18조 ③, 「아동학대범죄의 처벌 등에 관한 특례법」 제35조 ③ (비밀엄수)','「성폭력방지 및 피해자보호 등에 관한 법률」 제7조','「학교폭력예방 및 대책에 관한 법률」 제17조, 같은 법 시행령 제20조'],
   qa:[34,35,36,37], tools:[] },
@@ -1210,7 +1259,7 @@ const FORMS = {
   nextyear:[['유예·정원 외 학생 출석 독촉·경고 통보 안내장','학교 → 보호자'],['유예·정원 외 학생 재취학 안내문','학교 → 보호자'],['정원 외 학적관리 유지 학부모 동의서','보호자 → 학교'],['검정고시 응시용 증명서 (정원 외 관리 증명서)','학교 → 학생']],
   movein:[['전입학 배정통지서 (행정복지센터 발급)','보호자 → 학교'],['개인정보 이용 동의서 등 학교별 서류','보호자 → 학교']],
   moveout:[['자료 입력 관련 공문 (전출일까지 입력 못 한 자료가 있을 때)','전출교 → 전입교']],
-  designated:[['교육장 학교 지정 전학 보호자 신청서','보호자 → 학교'],['담임교사 의견서, 학교장 의견서','학교 → 교육지원청'],['교육장 학교 지정 전학 기안문','학교 → 교육지원청'],['피해아동 비밀전학 요청서, 상담 사실 확인서','관계 기관 → 학교'],['학교폭력 가해학생(제8호) 전학학교 배정 요청서, 조치결정 통보서','학교 → 교육지원청'],['교육활동 침해학생 전학학교 배정 요청서','학교 → 교육지원청'],['학부모 동의서','보호자 → 학교']],
+  designated:[['교육장 학교 지정 전학 보호자 신청서','보호자 → 학교'],['담임 추천서(의견서), 학교장 추천서(의견서)','학교 → 교육지원청'],['학교생활기록부Ⅱ 사본, 주민등록등본','학교 → 교육지원청'],['피해아동 취학지원 요청서, 보호자 전학 동의서','지자체 → 학교·교육지원청'],['위기관리위원회 회의록, 상담 기록(부적응 사유)','학교 → 교육지원청'],['교육장 학교 지정 전학 기안문','학교 → 교육지원청'],['피해아동 비밀전학 요청서, 상담 사실 확인서','관계 기관 → 학교'],['학교폭력 가해학생(제8호) 전학학교 배정 요청서, 조치결정 통보서','학교 → 교육지원청'],['교육활동 침해학생 전학학교 배정 요청서','학교 → 교육지원청'],['보호자 동의서(학부모 동의서)','보호자 → 학교']],
   returnabroad:[['재취학 신청서, 재취학 학부모 동의서','보호자 → 학교'],['취학·재취학(편입학) 허가 기안문','학교 내부'],['재취학에 따른 조기진급·졸업·진학 평가위원회 개최 기안문 (필요할 때)','학교 내부']],
   returnhome:[['재취학 신청서, 재취학 학부모 동의서','보호자 → 학교'],['수료(졸업) 불가 보호자 확인서 (수료가 안 되는 시점에 돌아올 때)','보호자 → 학교'],['재취학에 따른 조기진급·졸업·진학 평가위원회 개최 기안문','학교 내부'],['취학·재취학(편입학) 허가 기안문','학교 내부']],
   newarrival:[['학력인정 및 학년결정 신청서','보호자 → 학교·교육청'],['취학·재취학(편입학) 허가 기안문','학교 내부']],
@@ -1287,6 +1336,7 @@ const QA = [
  {id:54,c:'입학·취학',q:'입학연기를 신청하려면 아이를 꼭 데려가야 하나요?',a:'네. 2026년 하반기부터 아동의 소재·안전을 확인하기 위해 보호자가 아동과 함께 행정복지센터를 방문해 신청하는 것이 원칙입니다(2026. 4. 22. 관계부처 합동 「아동학대 예방 및 대응 강화 방안」). 해외 체류나 입원으로 어렵다면 출입국·입원 증빙과 영상통화 등으로 확인하니, 방문 전에 행정복지센터에 문의하도록 안내하세요.'},
  {id:55,c:'면제·유예',q:'지난해 취학유예·면제를 받은 아이는 올해 어떻게 되나요?',a:'면제받은 아동은 취학통지 대상이 아닙니다. 취학유예를 받은 아동은 올해 다시 취학 대상이라 취학아동명부에 오르고 취학통지를 받습니다. 한 번 더 유예할 수 있는지는 학교 의무교육관리위원회가 심의합니다.'},
  {id:56,c:'입학·취학',q:'특수학교나 특수학급에 입학시키고 싶다는 문의가 왔어요.',a:'특수교육대상자 선정·배치 절차와 일정은 관할 교육지원청 특수교육지원센터에 문의하도록 안내합니다.'},
+ {id:58,c:'전학',q:'방학 중에도 전학할 수 있나요?',a:'네. 초등학교 전입학은 연중 진행하므로 방학 중에도 전학합니다. 보호자는 새 주소로 전입신고를 한 뒤 다니던 학교와 지정받은 학교 두 곳에 각각 전학 사실을 알리고(「초·중등교육법 시행령」 제21조), 학교는 평소와 같이 전입·전출을 처리합니다. 교육장 지정 전학(교육환경 전환)도 방학 중에 진행합니다.'},
  {id:57,c:'정원 외',q:'정원 외 학적관리 중인 학생도 학교 전체 학생 수에 넣나요?',a:'교육기본통계조사와 학교정보공시 학생 수 기준으로, 장기결석에 따라 정원 외 학적관리 중인 학생과 취학 의무 유예로 정원 외 학적관리 중인 학생은 학교 전체 학생 수에서 제외합니다. 정원 외로 입학해 실제 재학 중인 학생은 포함합니다. ‘정원 외 입학’과 ‘정원 외 학적관리’는 서로 다른 개념입니다.'}
 ];
 
@@ -1294,6 +1344,8 @@ const QA = [
    용어
    ============================================================ */
 const TERMS = [
+ ['교육환경 전환','학교생활 부적응, 질병, 학교폭력 피해, 아동학대·가정폭력·성폭력 피해 등으로 교육환경을 바꿔야 할 때 주소를 옮기지 않고 교육장이 지정한 학교로 전학하는 것을 현장에서 부르는 말. 법령상으로는 교육장 지정 전학입니다. 대상과 서류는 교육지원청마다 다릅니다.'],
+ ['자율학구','일부 지역에서 운영하는 학구로, 정해진 범위 안에서는 주소지 통학구역과 관계없이 자율학구로 지정된 학교에 입학·전학할 수 있습니다. 운영 여부와 범위는 교육청마다 다릅니다.'],
  ['의무교육','초등학교 6년과 중학교 3년의 교육. 보호자에게 자녀를 취학시킬 의무가 있습니다. 특수교육대상자는 유치원부터 고등학교 과정까지 의무교육입니다.'],
  ['입학','학교에 들어가는 것. 초등학교에서는 1학년 신입학을 말합니다.'],
  ['취학','처음으로 의무교육 학교의 알맞은 학년에 들어가는 것.'],
@@ -1516,7 +1568,7 @@ document.addEventListener('keydown', e => { if((e.key==='Enter'||e.key===' ') &&
 
 function setTab(p){
   const base = p.split(':')[0];
-  const map = {sit:'sits', tool:'tools', search:'', terms:'lib', qa:'lib', neis:'lib', forms:'lib', law:'lib', cmte:'lib'};
+  const map = {sit:'sits', procs:'sits', tool:'tools', search:'', terms:'lib', qa:'lib', neis:'lib', forms:'lib', law:'lib', cmte:'lib'};
   const t = map[base] !== undefined ? map[base] : base;
   document.querySelectorAll('#tabs button, #bnav button').forEach(b => b.classList.toggle('on', b.dataset.tab===t));
   const on = document.querySelector('#tabs button.on'), tb = document.getElementById('tabs'); if(on && tb){ const l = on.offsetLeft - tb.offsetLeft, r = l + on.offsetWidth; if(l < tb.scrollLeft || r > tb.scrollLeft + tb.clientWidth) tb.scrollLeft = Math.max(0, l - 16); }
@@ -1540,6 +1592,7 @@ function render(p){
     case 'forms': html = pForms(); title='서식 안내'; break;
     case 'law': html = pLaw(arg); title='근거 법령'; break;
     case 'search': html = pSearch(); title='검색'; break;
+    case 'procs': html = pProcs(arg); title='절차 한눈에'; break;
     default: html = pHome();
   }
   if(['terms','qa','neis','forms','law','cmte'].includes(base)) html = `<button class="back" data-go="lib">${ic('left')}자료실</button>` + html;
@@ -1597,6 +1650,7 @@ function pHome(){
     <p class="small muted" style="margin-top:4px">이 세 가지부터 보면 나머지가 훨씬 쉬워집니다.</p>
     <ol>
       <li><span><button data-go="cal">한 해 업무 흐름</button> — 언제 무엇을 하는지 먼저 훑어보세요.</span></li>
+      <li><span><button data-go="procs">절차 한눈에</button> — 전학·유예·재취학 같은 업무가 어떤 순서로 굴러가는지 순서도로 봅니다.</span></li>
       <li><span><button data-go="terms">헷갈리는 용어 3쌍</button> — 입학연기·취학유예·유예 / 면제·유예·정원 외 / 입학·취학·재취학</span></li>
       <li><span><button data-go="cmte">의무교육관리위원회</button> — 면제·유예·정원 외는 대부분 여기서 정합니다.</span></li>
     </ol>
@@ -1627,6 +1681,7 @@ function extLink(k){
    ============================================================ */
 function pSits(){
   return `<h1 class="h1">상황별 찾기</h1><p class="lead">지금 생긴 일과 가장 가까운 상황을 고르세요.</p>
+  <button class="lawhint" data-go="procs" style="margin:12px 0 4px">${ic('list')}<span><b>절차 한눈에</b> — 전학·유예·면제·재취학·졸업 등 ${PROC.length}가지 업무를 누가·언제·무엇을 하는지 순서도로 보기</span>${ic('arr')}</button>
   ${gnav()}
   ${groupBlocks(false)}
   <div class="note b" style="margin-top:18px">${ic('compass')}<div>어느 처리에 해당하는지 헷갈리면 <button class="btn sm" style="margin-left:4px" data-go="tool:judge">처리 판별기</button>로 몇 가지 질문에 답해 보세요.</div></div>`;
@@ -2101,11 +2156,14 @@ function lawRender(){
   const nq = lawQ.replace(/\s/g,'');
   const list = LAWS.filter(x => (lawF==='전체'||x.law===lawF) && (!nq || (x.no+x.t+x.b).replace(/\s/g,'').includes(nq)));
   const rel = k => SIT.filter(s => s.law && lawKeys(s.law).includes(k));
-  box.innerHTML = list.length ? list.map(x => {
+  /* ③ 법령에서 절차를 찾으면 절차 순서도로 안내 */
+  const pr = lawQ.trim() ? matchProc(lawQ) : null;
+  const hint = pr ? `<button class="lawhint" data-go="procs:${pr.id}">${ic('list')}<span><b>절차를 찾으세요?</b> 「${esc(pr.name)}」 절차를 누가·언제·무엇을 하는지 순서도로 보기</span>${ic('arr')}</button><p class="small muted" style="margin:10px 0 4px">아래는 법령 원문입니다.</p>` : '';
+  box.innerHTML = hint + (list.length ? list.map(x => {
     const body = esc(x.b).split('\n').map(p => `<p style="margin-top:6px">${lawQ.trim()?hl(p, lawQ):p}</p>`).join('');
     const r = rel(x.k);
     return `<details class="fold" id="law-${x.k}"><summary><span class="tag ${x.law==='법'?'':'n'}" style="margin-right:6px;vertical-align:1px">${x.law==='법'?'법':'시행령'}</span>${x.no}(${esc(x.t)})</summary><div class="fb law" style="font-size:14px;line-height:1.7">${body}${r.length?`<div class="row" style="margin-top:12px">${r.map(s=>`<button class="btn sm ghost" data-go="sit:${s.id}">${s.title} ${ic('arr')}</button>`).join('')}</div>`:''}</div></details>`;
-  }).join('') : `<div class="empty">맞는 조문이 없어요.</div>`;
+  }).join('') : `<div class="empty">맞는 조문이 없어요.</div>`);
   const op = box.dataset.open;
   if(op){ const el = document.getElementById('law-'+op); if(el){ el.open = true; setTimeout(()=>el.scrollIntoView({block:'start'}), 60); } box.dataset.open=''; }
 }
@@ -2171,6 +2229,7 @@ const STOP = ['초등학교','학교','애','아이가','학생','아이','아�
 const SUFFIX = ['으로부터','에서부터','이라면','라면','에게서','으로서','으로써','이에요','이었는데','했는데','었는데','았는데','하려면','으려면','려면','해야','하고','하는','하면','해서','와서','가서','에서','에게','까지','부터','으로','이랑','처럼','보다','이나','이며','이고','인데','는데','은데','하여','되어','된','된다','한다','하다','이다','습니다','합니다','니다','나요','가요','까요','어요','아요','해요','에요','예요','은','는','이','가','을','를','에','의','도','만','와','과','로','나','요','고','면','서','지','한','할','된','될','인'];
 /* 유의어: 질문에 이런 표현이 있으면 사이트 용어를 덧붙여 찾습니다 */
 const SYNS = [
+  [/교육\s*환경\s*전환|교육\s*환경을?\s*바꾸|자율\s*학구|부적응.{0,8}전학|전학.{0,8}부적응|위기\s*관리\s*위원회/, '교육환경 전환 교육장 지정 전학 주소 이전 없이'],
   [/전학\s*(와|온|오|옴|왔)|전학을\s*온|전입한|전입생|이사\s*와/, '전입 전입생 전입학'],
   [/전학\s*(가|간|갔|감)|전학을\s*가|전출/, '전출 전학'],
   [/홈\s*스쿨|홈스쿨|가정에서\s*(교육|가르|공부)|집에서\s*(교육|가르|공부)/, '홈스쿨링 가정 내 학습 미인정결석'],
@@ -2299,7 +2358,9 @@ const INTENTS = [
  {id:'tr_unprocessed', must:[['전학'],['정리하지','처리하지','정리안','처리안','안했','누락']], not:['졸업'], a:'전입교가 전입 당일 나이스로 자료를 요청하면, 전출교는 전출일까지 기록을 입력하고 학교생활기록부를 생성해 <b>전출 자료를 보낸 뒤 학적을 반영</b>합니다. 자료 요청이 오지 않으면 전출교는 행정정보로 전입 여부를 확인하고 보호자에게 연락하며, 전입하지 않은 기간은 전출교에서 미인정결석입니다.', go:[L('sit:moveout','전학 가는 학생'),L('sit:movein','전학 오는 학생')]},
  {id:'tr_fix', must:[['전입','전학','이전학교'],['잘못','오류','틀린','오타','수정','정정']], not:['졸업한','졸업후','졸업처리한'], a:'<b>이전 학년도</b> 자료는 자료를 받은 뒤 전입교가 정정합니다. <b>당해 학년도</b> 자료는 학적 반영 전이라면 전출교와 협의해 고칩니다. 정정은 증빙을 붙여 정정대장으로 처리합니다.', go:[L('sit:correct','생활기록부 정정'),L('sit:movein','전학 오는 학생')]},
  {id:'tr_days', p:4, must:[['수업일수'],['다르','다른','달라','차이']], opt:[['전학','전입']], a:'수업일수가 달라도 기준은 <b>전입교 수업일수</b>입니다. 전출교와 전입교의 출석일수를 합쳐 전입교 수업일수의 3분의 2 이상이면 수료합니다(190일 미만이어도 됨). 두 학교 출결을 합쳐 결석·지각 등이 하나도 없으면 개근입니다.', go:[L('tool:pass','수료 가능 확인 (전입생)','hj_psK=tr'),L('sit:promote','수료 기준')]},
- {id:'tr_lastday', must:[['전학','전입'],['마지막날','학년말','종업식','방학','2월']], not:['졸업','이사한','전출일과','전입일'], a:'학년도는 2월 말일까지라서, 학기 마지막 날이나 종업식 이후에 전학해도 전출·전입을 처리하고 <b>학년말에 재적하는 학교(전입교)</b>가 수료·진급을 처리합니다. 전입교가 이미 진급 처리를 마쳤다면 {진급누락자처리}로 올립니다.', go:[L('sit:promote','학년말 수료·진급'),L('qa','관련 Q&A')]},
+ {id:'tr_vacation', p:4, must:[['전학','전입','전출','교육환경전환'],['방학중','방학에도','방학때','방학기간','방학동안','방학에']], not:['마지막날','종업식','학년말','졸업','전출일','전입일','날짜','며칠로'], a:'됩니다. 초등학교 전입학은 <b>연중</b> 진행하므로 방학 중에도 전학합니다. 보호자는 전입신고 뒤 다니던 학교와 지정받은 학교 <b>두 곳에 각각</b> 알리고, 학교는 평소와 같이 전입·전출을 처리합니다. 교육장 지정 전학(교육환경 전환)도 방학 중에 진행합니다.', go:[L('sit:movein','전학 오는 학생을 받아요'),L('sit:moveout','전학 가는 학생을 보내요')]},
+ {id:'tr_envchange', p:3, must:[['교육환경전환','교육환경을바꾸','자율학구','부적응','위기관리위원회']], opt:[['서류','절차','전학','대상']], a:'<b>교육환경 전환</b>은 주소를 옮기지 않고 교육장이 지정한 학교로 전학하는 것(교육장 지정 전학)입니다. 학교생활 부적응, 질병, 학교폭력 피해, 아동학대·가정폭력·성폭력 피해 등이 대상이고, 학교장 추천서·담임 추천서·보호자 동의서 같은 공통 서류에 사유별 서류를 더해 교육지원청에 냅니다. 대상과 서류는 <b>교육지원청마다 다르니</b> 해당 학년도 안내를 확인하세요.', go:[L('sit:designated','주소 이전 없이 전학이 필요해요'),L('procs:designated','절차 순서도')]},
+ {id:'tr_lastday', must:[['전학','전입'],['마지막날','학년말','종업식','방학','2월']], not:['졸업','이사한','전출일과','전입일','방학중','방학에도','방학때','방학기간','방학동안'], a:'학년도는 2월 말일까지라서, 학기 마지막 날이나 종업식 이후에 전학해도 전출·전입을 처리하고 <b>학년말에 재적하는 학교(전입교)</b>가 수료·진급을 처리합니다. 전입교가 이미 진급 처리를 마쳤다면 {진급누락자처리}로 올립니다.', go:[L('sit:promote','학년말 수료·진급'),L('qa','관련 Q&A')]},
  {id:'tr_dates', must:[['전출일','전입일','전출입일','전학날짜','이사날짜','날짜어떻게','날짜를어떻게','날짜잡','며칠로']], a:'전출일과 전입일은 <b>공백 없이</b> 이어지게 정합니다(전입일 = 전출일 다음 날). 방학 중이라도 개학일이 다르면 결석이 생기지 않도록 방학 중에 처리할 수 있습니다. 전출교 수업일을 빠진 날은 전출교 미인정결석이고, 국내 원격지 1일·국외 원격지 3일까지는 공백을 인정합니다.', go:[L('tool:move','전출일·전입일 정하기'),L('sit:moveout','전학 가는 학생')]},
  {id:'tr_back', must:[['전학'],['돌아','다시원래','원래학교']], not:['해외','외국','귀국'], a:'전학 갔던 학생이 원래 학교로 돌아오면 <b>다시 일반 전입 절차</b>로 처리합니다. 주소를 다시 옮겨 전입신고를 하고, 원래 학교가 전입교가 되어 나이스로 자료를 요청합니다. 전출입일은 공백 없이 정합니다.', go:[L('sit:movein','전학 오는 학생'),L('tool:move','전출일·전입일 정하기')]},
  {id:'re_grade', must:[['귀국','해외','외국','살다왔','살다가','살다온','다녀왔','미국','일본','중국','캐나다','호주','베트남','영국','독일','필리핀','싱가포르'],['학년','복귀','돌아','재취학']], opt:[['년간','다니다','학교를다닌']], not:['국적','외국인','6개월','중학교','온라인','입학하지','만10세','태어'], a:'정당한 해외 출국으로 면제됐던 학생은 <b>국내 마지막 학년에 외국 정규학교 재학 기간을 더해</b> 학년을 정하고, 이 경우 이수인정평가는 하지 않습니다. 9월 학기 국가는 한 학기씩 조정하고, 외국에서 이수가 부족하면 아래 학년으로 배정합니다.', go:[L('sit:returnabroad','해외에서 돌아왔어요')], ext:'foreign'},
@@ -2354,24 +2415,147 @@ function intentCard(it, first){
     ? `<div class="ans"><div class="lb">${ic('check')}이 질문의 답</div><p>${it.a}</p><div class="row" style="margin-top:12px">${btns}</div>${ext?`<div class="ext" style="margin-top:10px">${ext}</div>`:''}</div>`
     : `<details class="fold"><summary>이런 뜻이었나요? — ${strip(it.a).slice(0,38)}…</summary><div class="fb"><p>${it.a}</p><div class="row" style="margin-top:10px">${btns}</div></div></details>`;
 }
+/* ============================================================
+   절차 한눈에 — 상황 페이지의 단계(steps·timeline)를 꺼내 순서도로 보여 줍니다.
+   검색에서 '절차·방법·순서·어떻게' 같은 말이 오면 맨 위 '절차 답 카드'로도 씁니다.
+   kw: 이 절차를 가리키는 말(위에서부터 먼저 맞는 것을 고릅니다). pre: 학교 일 전에 보호자·기관이 하는 단계.
+   ============================================================ */
+const PROC = [
+  { id:'designated', name:'교육환경 전환(주소 이전 없는 전학)', grp:'tr', kw:/교육\s*환경\s*전환|교육\s*환경을?\s*바꾸|자율\s*학구|부적응.{0,8}전학|전학.{0,8}부적응|위기\s*관리\s*위원회|(아동\s*)?학대.{0,12}전학|가정\s*폭력.{0,12}전학|성\s*폭력.{0,12}전학|피해\s*(아동|학생).{0,10}전학|지정\s*전학|주소\s*(이전|변경)\s*없|이사\s*(안|없|하지\s*않)|비밀\s*전입|비밀\s*전학|교육장\s*(지정|배정)/,
+    auto:q=>/학대|가정\s*폭력|성\s*폭력|지자체|취학\s*지원/.test(q)?1:0,
+    tabs:[['일반 교육환경 전환','designated'],
+      ['아동학대·가정폭력·성폭력','designated',[
+        {t:'취학지원 요청', who:'지자체 → 학교·교육지원청', when:'', d:'지자체가 피해아동 취학지원 요청서와 보호자의 전학 동의서를 재학 중인 학교와 교육지원청에 보냅니다. 행위자인 보호자의 동의는 받지 않습니다.'},
+        {t:'학교장 추천', who:'재학 학교 → 교육지원청', when:'', d:'재학 중인 학교가 학교장 추천서를 교육지원청에 보냅니다.'},
+        {t:'교육장 학교 지정', who:'교육장', when:'', d:'주소를 옮기지 않아도 피해 사실을 보여 주는 자료가 있으면 전학할 학교를 지정합니다. 형제·자매도 함께 지원할 수 있습니다.'},
+        {t:'전입교 처리와 비밀 유지', who:'전입교', when:'', d:'나이스 전입 등록 때 <b>비밀전입</b>에 체크하고, 취학·전학 사실을 행위자인 보호자를 포함해 누구에게도 알리지 않습니다.'}], true]] },
+  { id:'transfer', name:'전학', grp:'tr', kw:/전학|전입|전출/, auto:q=>/전출|전학\s*(가|간|갔|보내)|보내는/.test(q)?1:0, tabs:[
+      ['받는 학교(전입)','movein',[
+        {t:'새 주소로 전입신고', who:'보호자 → 읍·면·동', when:'', d:'이사한 곳의 행정복지센터에 전입신고를 합니다. 이사 예정 계약서만으로는 전학할 수 없습니다.'},
+        {t:'전학할 학교 지정', who:'읍·면·동', when:'', d:'새 주소의 통학구역 학교를 전학할 학교로 지정합니다.'},
+        {t:'두 학교에 전학 사실 알리기', who:'보호자 → 학교', when:'', d:'다니던 학교와 지정받은 학교 두 곳 모두에 알립니다.'}]],
+      ['보내는 학교(전출)','moveout']] },
+  { id:'early', name:'입학연기·조기입학', grp:'in', kw:/입학\s*연기|조기\s*입학|입학을?\s*(미루|늦추|연기|1년)/, tabs:[['입학연기·조기입학','early']] },
+  { id:'change', name:'입학할 학교 변경', grp:'in', kw:/입학.{0,8}(학교\s*변경|다른\s*학교)|지정\s*학교가?\s*아닌|입학\s*학교\s*변경/, tabs:[['입학할 학교 변경','change']] },
+  { id:'nodoc', name:'주민등록이 없거나 외국인 아동 입학', grp:'in', kw:/주민\s*등록.{0,6}(없|안\s*된)|외국인\s*(아동|아이|학생).{0,8}(입학|취학)|미등록\s*(이주)?\s*아동/, tabs:[['주민등록 없는 아동 입학','nodoc']] },
+  { id:'special', name:'특수교육대상자 선정·배치', grp:'in', kw:/특수\s*교육\s*대상|특수\s*학급\s*배치|선정\s*(·|및)?\s*배치/, tabs:[['선정·배치','special']] },
+  { id:'prelim', name:'예비소집 미응소 확인', grp:'in', kw:/예비\s*소집|미응소/, tabs:[['예비소집','prelim']] },
+  { id:'noshow', name:'입학식에 오지 않은 아동', grp:'in', kw:/입학식.{0,10}(안\s*(오|온|와|나)|오지|불참)|미입학|입학하지\s*않/, tabs:[['날짜별 대응','noshow']] },
+  { id:'roster', name:'취학(명부부터 학적 생성까지)', grp:'in', kw:/취학\s*아동\s*명부|취학\s*업무|신입생\s*학적|학적\s*일괄\s*생성|(^|[^재])취학\s*(절차|처리|순서|방법)|^취학$/, tabs:[['취학 업무','roster']] },
+  { id:'returnabroad', name:'해외 귀국 학생 재취학', grp:'re', kw:/귀국|해외에서\s*(돌아|왔|살다)|외국에서\s*(돌아|살다)/, tabs:[['귀국 학생 재취학','returnabroad']] },
+  { id:'newarrival', name:'국내 학적이 없는 학생 편입학', grp:'re', kw:/편입학|편입|북한\s*이탈|국내\s*학적.{0,4}없|외국\s*국적.{0,8}(전학|편입|입학)/, tabs:[['편입학','newarrival']] },
+  { id:'returnhome', name:'유예·정원 외 학생 재취학', grp:'re', kw:/재취학|다시\s*(학교|다니)|돌아와|복귀/, tabs:[['재취학','returnhome']] },
+  { id:'abroad', name:'해외 출국 면제', grp:'ex', kw:/해외\s*(출국|이민|유학|거주)|해외로|외국으로\s*(가|이민|나가|이사)|면제/, tabs:[['해외 출국 면제','abroad']] },
+  { id:'nextyear', name:'유예·정원 외 학생 새 학년도 준비', grp:'ex', kw:/재취학\s*통보|유예\s*연장|유지\s*동의|새\s*학년도\s*준비/, tabs:[['새 학년도 준비','nextyear']] },
+  { id:'alt', name:'대안교육·홈스쿨링', grp:'ex', kw:/대안\s*교육\s*기관|대안\s*교육|홈\s*스쿨|미인가/, tabs:[['대안교육·홈스쿨링','alt']] },
+  { id:'sick', name:'질병 유예', grp:'ex', kw:/유예|취학\s*유예/, tabs:[['질병·발육 유예','sick']] },
+  { id:'longabs', name:'장기결석 정원 외 학적관리', grp:'ex', kw:/정원\s*외|장기\s*결석/, tabs:[['정원 외 학적관리','longabs']] },
+  { id:'accel', name:'조기진급·조기졸업', grp:'gr', kw:/조기\s*(진급|졸업)/, tabs:[['조기진급·조기졸업','accel']] },
+  { id:'repeat', name:'유급', grp:'gr', kw:/유급/, tabs:[['유급','repeat']] },
+  { id:'graduate', name:'졸업 처리', grp:'gr', kw:/졸업/, tabs:[['졸업 처리','graduate']] },
+  { id:'promote', name:'수료·진급', grp:'gr', kw:/진급|수료|학년말\s*(처리|마감)/, tabs:[['수료·진급','promote']] },
+  { id:'health', name:'건강장애 위탁교육', grp:'wt', kw:/병원\s*학교|원격\s*수업|건강\s*장애/, tabs:[['병원학교·원격수업','health']] },
+  { id:'exchange', name:'교환학습', grp:'wt', kw:/교환\s*학습/, tabs:[['교환학습','exchange']] },
+  { id:'altwituk', name:'대안교육 위탁교육', grp:'wt', kw:/위탁\s*교육|위탁/, tabs:[['위탁교육','altwituk']] }
+];
+/* 절차를 묻는 말 */
+const PROC_CUE = /절차|방법|순서|어떻게\s*(해|하|처리|진행|되)|처리\s*(하|해|방법|순서|과정)|과정|하는\s*법|진행|단계|흐름|뭐부터|무엇부터|할\s*일|서류/;
+/* 행위자 색: 보호자(주황) · 기관(보라) · 학교(파랑) */
+function whoCls(w){
+  if(/^보호자/.test(w)) return 'a';
+  if(/^(지자체|읍|면|동|교육장|교육청|교육지원청|교육감|특수교육|의무교육관리위원회|조기진급|학력심의|두\s*학교장|관계)/.test(w)) return 'v';
+  return '';
+}
+function procSteps(sitId, pre, only){
+  if(only) return pre || [];
+  const s = SIT.find(x=>x.id===sitId); if(!s) return [];
+  const base = s.steps && s.steps.length ? s.steps.map(t=>({t:t.t, who:t.who||'', when:t.when||'', d:t.d||''}))
+             : (s.timeline||[]).map(t=>({t:t.t, who:'', when:t.w, d:t.d||''}));
+  return (pre||[]).concat(base);
+}
+/* 순서도 한 벌: compact면 단계 설명을 접어 둡니다 */
+function procFlow(sitId, pre, compact, only){
+  const st = procSteps(sitId, pre, only);
+  if(!st.length) return `<p class="small muted">이 상황은 경우마다 처리가 달라 단계 순서도 대신 상황 페이지의 「경우별 처리」를 보세요.</p>`;
+  return `<ol class="pflow">${st.map((t,i)=>`<li class="${whoCls(t.who)}"><span class="pn">${i+1}</span><div class="pb">
+    <div class="pm">${t.who?`<span class="pw ${whoCls(t.who)}">${esc(t.who)}</span>`:''}${t.when?`<span class="pd">${ic('cal')}${esc(t.when)}</span>`:''}</div>
+    <div class="pt">${t.t}</div>${t.d? (compact?`<details class="pdx"><summary>자세히</summary><div class="pdd">${t.d}</div></details>`:`<div class="pdd">${t.d}</div>`):''}</div></li>`).join('')}</ol>`;
+}
+function procExtras(sitId){
+  const s = SIT.find(x=>x.id===sitId); if(!s) return '';
+  const docs = s.docs ? Object.values(s.docs).flat() : [];
+  const fm = (FORMS[sitId]||[]).map(f=>f[0]);
+  const ne = (s.neis||[]).map(n=>n.p);
+  const bits = [];
+  if(docs.length) bits.push(`<div class="px"><b>${ic('doc')}필요 서류 ${docs.length}</b><span>${docs.slice(0,4).map(d=>strip(d)).join(' · ')}${docs.length>4?' 외':''}</span></div>`);
+  else if(fm.length) bits.push(`<div class="px"><b>${ic('doc')}관련 서식 ${fm.length}</b><span>${fm.slice(0,4).map(strip).join(' · ')}${fm.length>4?' 외':''}</span></div>`);
+  if(ne.length) bits.push(`<div class="px"><b>${ic('monitor')}나이스</b><span>${esc(ne[0])}${ne.length>1?` 외 ${ne.length-1}`:''}</span></div>`);
+  return bits.length ? `<div class="pxs">${bits.join('')}</div>` : '';
+}
+/* 질문에서 절차 고르기: 절차를 묻는 말이 있거나, 주제만 짧게 적었을 때 */
+function matchProc(q){
+  const t = q.replace(/\s+/g,' ').trim(); if(!t) return null;
+  const p = PROC.find(x=>x.kw.test(t)); if(!p) return null;
+  const words = t.split(' ').filter(w=>w.length>=2);
+  return (PROC_CUE.test(t) || words.length <= 2) ? p : null;
+}
+/* 검색 맨 위 절차 답 카드 */
+function procCard(p, tabIdx){
+  const ti = Math.min(tabIdx||0, p.tabs.length-1);
+  const [label, sitId, pre, only] = p.tabs[ti];
+  const s = SIT.find(x=>x.id===sitId);
+  const tabs = p.tabs.length > 1 ? `<div class="ptabs">${p.tabs.map((tb,i)=>`<button class="${i===ti?'on':''}" data-ptab="${p.id}:${i}">${tb[0]}</button>`).join('')}</div>` : '';
+  return `<div class="pcard" id="pcard"><div class="plb">${ic('list')}절차 한눈에 — ${esc(p.name)}</div>
+    ${tabs}${s?`<p class="psum">${s.sum}</p>`:''}
+    ${procFlow(sitId, pre, true, only)}
+    ${procExtras(sitId)}
+    <div class="row" style="margin-top:12px"><button class="btn sm" data-go="sit:${sitId}">「${strip(s?s.title:label)}」 자세히 ${ic('arr')}</button><button class="btn sm ghost" data-go="procs">다른 절차 보기</button></div></div>`;
+}
+/* 절차 한눈에 페이지 */
+function pProcs(open){
+  const blocks = GRP.map(g=>{
+    const items = PROC.filter(p=>p.grp===g.k); if(!items.length) return '';
+    return `<h2 class="h2 ${g.cls} sec" id="pg-${g.k}"><span class="bar"></span>${g.name}</h2>` + items.map(p=>`<details class="fold proc" id="proc-${p.id}" ${open===p.id?'open':''}><summary>${esc(p.name)}<span class="pc">${p.tabs.map(tb=>procSteps(tb[1], tb[2], tb[3]).length).reduce((a,b)=>a+b,0)}단계</span></summary><div class="fb">
+      ${p.tabs.map(([label, sitId, pre, only])=>`${p.tabs.length>1?`<h4 class="ph">${label}</h4>`:''}${procFlow(sitId, pre, false, only)}${procExtras(sitId)}<div class="row" style="margin:10px 0 6px"><button class="btn sm ghost" data-go="sit:${sitId}">서류·나이스·기재 예시까지 보기 ${ic('arr')}</button></div>`).join('')}
+    </div></details>`).join('');
+  }).join('');
+  return `<button class="back" data-go="sits">${ic('left')}상황 목록</button><h1 class="h1">절차 한눈에</h1>
+  <p class="lead">학적 업무를 <b>누가 · 언제 · 무엇을</b> 하는지 순서대로 모았습니다. 절차를 눌러 펼쳐 보세요.</p>
+  <div class="plegend"><span class="pw a">보호자</span><span class="pw v">읍·면·동 · 교육청 · 위원회</span><span class="pw">학교</span></div>
+  <div class="gnav">${GRP.map(g=>`<button data-jump="pg-${g.k}"><i style="background:${g.color}"></i>${g.short||g.name}<small>${PROC.filter(p=>p.grp===g.k).length}</small></button>`).join('')}</div>
+  ${blocks}
+  <div class="note" style="margin-top:18px">${ic('info')}<div>단계는 이 사이트의 상황 페이지 내용을 순서대로 모은 것입니다. 지역마다 다른 부분은 상황 페이지의 ‘시·도 지침 확인’ 안내를 함께 보세요.</div></div>`;
+}
+
 function pSearch(){
   return `<h1 class="h1">검색</h1><p class="lead">궁금한 것을 문장으로 그대로 물어보세요.</p>
   <form class="sbox" id="sForm" role="search" style="margin-top:12px">${ic('search')}<input id="sQ" type="search" placeholder="예: 6학년으로 전학 왔는데 졸업할 수 있나요?" value="${esc(searchQ)}" autocomplete="off" aria-label="검색어"><button type="submit">찾기</button></form>
   <div class="chips">${['입학을 1년 늦추고 싶어요','홈스쿨링하면 면제되나요?','전학 온 학생 졸업 가능?','해외에서 2년 살다 귀국했어요','출석일수가 부족하면?'].map(c=>`<button class="chip" data-sq="${esc(c)}">${esc(c)}</button>`).join('')}</div>
   <div id="sRes"></div>`;
 }
+let procTab = null;
+const SR_ORDER = ['상황','Q&A','용어','나이스','일정','도구','서식','법령'];
+function srItem(x, q){ return `<button class="sr" data-go="${x.go}" ${x.qid?`data-qid="${x.qid}"`:''}><div class="t"><span class="tag ${x.type==='상황'?'':x.type==='Q&A'?'v':x.type==='나이스'?'n':x.type==='서식'?'c':'a'}" style="margin-right:6px">${x.type}</span>${hlWords(esc(x.title), coreWords(q))}</div><div class="x">${snippet(x.text, q)}</div></button>`; }
 function searchRender(){
   const q = searchQ; const box = $('#sRes'); if(!box) return;
   if(!q.trim()){ box.innerHTML = `<div class="empty">상황, 서류, 용어, 나이스 메뉴, Q&amp;A, 법령을 한꺼번에 찾습니다.<br>낱말도, 문장도 됩니다.</div>`; return; }
   const its = matchIntents(q);
   const r = doSearch(q);
-  let cards = its.length ? intentCard(its[0].it, true) + (its[1] && its[1].sc >= its[0].sc*0.8 ? intentCard(its[1].it, false) : '') : '';
+  const pr = matchProc(q);
+  /* ① 절차를 묻는 질문이면 맨 위에 절차 답 카드 */
+  let cards = pr ? procCard(pr, procTab !== null ? procTab : (pr.auto ? pr.auto(q) : 0)) : '';
+  cards += its.length ? intentCard(its[0].it, !pr) + (!pr && its[1] && its[1].sc >= its[0].sc*0.8 ? intentCard(its[1].it, false) : '') : '';
   if(!cards && r.length && (r[0].type==='Q&A' || r[0].type==='상황')){
     const top = r[0];
     const body = top.type==='Q&A' ? esc(QA.find(x=>x.id===top.qid).a) : SIT.find(x=>'sit:'+x.id===top.go).sum;
     cards = `<div class="ans" style="background:#2B3446"><div class="lb">${ic('search')}가장 가까운 답 — ${esc(top.title)}</div><p>${body}</p><div class="row" style="margin-top:12px"><button class="btn sm" style="background:#fff;color:var(--ink)" data-go="${top.go}" ${top.qid?`data-qid="${top.qid}"`:''}>${top.type==='Q&A'?'Q&A에서 보기':'자세한 절차 보기'} ${ic('arr')}</button></div></div>`;
   }
-  const list = r.length ? `<p class="small muted" style="margin-top:16px">${its.length?'관련 내용 ':''}${Math.min(r.length,30)}건</p><div class="sres">${r.slice(0,30).map(x=>`<button class="sr" data-go="${x.go}" ${x.qid?`data-qid="${x.qid}"`:''}><div class="t"><span class="tag ${x.type==='상황'?'':x.type==='Q&A'?'v':x.type==='나이스'?'n':x.type==='서식'?'c':'a'}" style="margin-right:6px">${x.type}</span>${hlWords(esc(x.title), coreWords(q))}</div><div class="x">${snippet(x.text, q)}</div></button>`).join('')}</div>` : '';
+  /* ④ 결과를 종류별로 묶고, 법령 원문은 접어 둡니다 */
+  const top30 = r.slice(0,30);
+  const groups = SR_ORDER.map(t=>[t, top30.filter(x=>x.type===t)]).concat([['기타', top30.filter(x=>!SR_ORDER.includes(x.type))]]).filter(g=>g[1].length);
+  const list = top30.length ? `<p class="small muted" style="margin-top:16px">${cards?'관련 내용 ':''}${top30.length}건</p>` + groups.map(([t, arr]) => t==='법령'
+      ? `<details class="lawres"><summary>근거 법령 ${arr.length}개 보기</summary><div class="sres">${arr.map(x=>srItem(x,q)).join('')}</div></details>`
+      : `<div class="sgrp">${t}<small>${arr.length}</small></div><div class="sres" style="margin-top:8px">${arr.map(x=>srItem(x,q)).join('')}</div>`).join('') : '';
   box.innerHTML = (cards || list) ? `<div style="margin-top:16px">${cards}</div>${list}<p class="small muted" style="margin-top:14px">원하는 답이 없으면 핵심 낱말 두세 개로 다시 찾아보세요. (예: 전학 졸업, 해외 귀국 학년)</p>` : `<div class="empty">‘${esc(q)}’에 맞는 내용이 없어요.<br>핵심 낱말 두세 개로 찾아보거나 <button class="btn sm ghost" data-go="sits">상황 목록</button>을 살펴보세요.</div>`;
 }
 
@@ -2382,14 +2566,16 @@ function afterRender(base, arg){
   if(base==='home' || !base){
     $('#homeSearch').onsubmit = e => { e.preventDefault(); searchQ = $('#homeQ').value; go('search'); };
   }
+  if(base==='procs' && arg){ const el = document.getElementById('proc-'+arg); if(el){ el.open = true; setTimeout(()=>{ const hd = document.querySelector('header'); const off = (hd ? hd.offsetHeight : 100) + 12; window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset - off); }, 60); } }
   if(base==='search'){
     const inp = $('#sQ');
     $('#sForm').onsubmit = e => { e.preventDefault(); searchQ = inp.value; store.set('hj_sq', searchQ); searchRender(); inp.blur(); };
-    inp.oninput = () => { searchQ = inp.value; store.set('hj_sq', searchQ); searchRender(); };
+    inp.oninput = () => { searchQ = inp.value; procTab = null; store.set('hj_sq', searchQ); searchRender(); };
     document.querySelectorAll('[data-sq]').forEach(b => b.onclick = () => { searchQ = b.dataset.sq; inp.value = searchQ; store.set('hj_sq', searchQ); searchRender(); });
     if(!searchQ) searchQ = store.get('hj_sq') || '';
     inp.value = searchQ; store.set('hj_sq', searchQ); searchRender();
     if(!searchQ) setTimeout(()=>inp.focus(), 50);
+    $('#sRes').addEventListener('click', e => { const t = e.target.closest('[data-ptab]'); if(t){ const [pid, i] = t.dataset.ptab.split(':'); procTab = +i; const p = PROC.find(x=>x.id===pid); const c = $('#pcard'); if(p && c) c.outerHTML = procCard(p, procTab); } }, true);
     $('#sRes').addEventListener('click', e => { const b = e.target.closest('[data-qid]'); if(b){ qaQ=''; qaCat='전체'; store.set('hj_openqa', b.dataset.qid); } }, true);
   }
   if(base==='qa'){
