@@ -2674,7 +2674,12 @@ document.addEventListener('keydown', e => { if(e.key==='Escape') $('#licModal').
    시작
    ============================================================ */
 (function init(){
-  const start = store.get('hj_p') || 'home';
+  /* 바로가기 주소: ?q=교육환경전환 → 검색 화면을 그 말로 엽니다(학교 연장통에서 연결). 주소의 ?… 는 지웁니다 */
+  let lq = '';
+  try{ lq = (new URLSearchParams(location.search).get('q') || '').trim(); }catch(e){}
+  if(location.search){ try{ history.replaceState(null, '', location.pathname); }catch(e){} }
+  let start = store.get('hj_p') || 'home';
+  if(lq){ searchQ = lq; procTab = null; store.set('hj_sq', lq); start = 'search'; store.set('hj_p', 'search'); }
   hist('replace', {p:'__guard'});
   hist('push', {p:start});
   try{ render(start); }catch(e){ console.error(e); try{ render('home'); }catch(_){} }
